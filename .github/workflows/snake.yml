@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: generate snake animation
-        uses: Platane/snk@v2
+        uses: Platane/snk@v3
         with:
           github_user_name: Highashikata
           outputs: svg
@@ -20,6 +20,6 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2.1.3
         with:
           target_branch: output
-          build_dir: . 
+          build_dir: .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
