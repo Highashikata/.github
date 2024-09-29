@@ -2,7 +2,6 @@ name: Generate Snake Game
 
 on:
   schedule:
-    # Runs every day at midnight
     - cron: "0 0 * * *"
   workflow_dispatch:
 
@@ -11,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Platane/snk@v2
+      - name: generate snake animation
+        uses: Platane/snk@v2
         with:
           github_user_name: Highashikata
-          gif_out_path: dist/github-contribution-grid-snake.gif
-          svg_out_path: dist/github-contribution-grid-snake.svg
+          outputs: svg
 
-      - name: Upload to GitHub Pages
+      - name: push snake animation to the output branch
         uses: crazy-max/ghaction-github-pages@v2.1.3
         with:
           target_branch: output
-          build_dir: dist
+          build_dir: . 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
