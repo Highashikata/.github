@@ -17,6 +17,10 @@ jobs:
           github_user_name: Highashikata
           outputs: svg
 
+      - name: list files for debugging
+        run: ls -R
+        shell: bash
+
       - name: push snake to the main branch
         run: |
           git config --global user.email "actions@github.com"
